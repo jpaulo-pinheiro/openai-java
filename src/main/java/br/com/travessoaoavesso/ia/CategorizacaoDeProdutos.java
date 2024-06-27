@@ -1,16 +1,12 @@
 package br.com.travessoaoavesso.ia;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import static br.com.travessoaoavesso.ia.IntegracaoOpenAI.enviarRequisicao;
 
-import com.theokanning.openai.completion.chat.ChatCompletionRequest;
-import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.completion.chat.ChatMessageRole;
-import com.theokanning.openai.service.OpenAiService;
+import java.util.Scanner;
 
 public class CategorizacaoDeProdutos {
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws InterruptedException {
 
                 System.out.println("Categorizador de Produtos\n");
 
@@ -38,21 +34,8 @@ public class CategorizacaoDeProdutos {
                                         """
                                         .formatted(categorias);
 
-                        dispararRequisicao(user, system);
+                        System.out.println(enviarRequisicao(user, system));
                 }
         }
 
-        private static void dispararRequisicao(String user, String system) {
-                var chave = System.getenv("OPENAI_API_KEY");
-                var service = new OpenAiService(chave);
-                var completionRequest = ChatCompletionRequest.builder()
-                                .model("gpt-4")
-                                .messages(Arrays.asList(new ChatMessage(ChatMessageRole.USER.value(), user),
-                                                new ChatMessage(ChatMessageRole.SYSTEM.value(), system.toString())))
-                                // .n(5) // numero de respostas
-                                .build();
-
-                service.createChatCompletion(completionRequest).getChoices()
-                                .forEach(c -> System.out.println(c.getMessage().getContent()));
-        }
 }

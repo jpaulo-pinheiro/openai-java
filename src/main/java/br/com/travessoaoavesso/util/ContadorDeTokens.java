@@ -5,11 +5,13 @@ import java.math.BigDecimal;
 import com.knuddels.jtokkit.Encodings;
 import com.knuddels.jtokkit.api.ModelType;
 
+import static br.com.travessoaoavesso.util.CarregadorDeDados.*;
+
 public class ContadorDeTokens {
 
     public static void main(String[] args) {
 
-        var clientes = OperacoesComArquivos.carregarClientesDoArquivo();
+        var clientes = carregarClientesDoArquivo();
         var qtd = contarTokens(clientes);
 
         System.out.println("Quantidade de tokens: " + qtd);
