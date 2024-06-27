@@ -27,7 +27,7 @@
 
         <!-- Minhas dependências adicionadas -->
         <dependency>
-            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <groupId>com.theokanning.openai-gpt4-java</groupId>
             <artifactId>service</artifactId>
             <version>0.18.2</version>
         </dependency>
