@@ -1,4 +1,4 @@
-package br.com.travessoaoavesso;
+package br.com.travessoaoavesso.ia;
 
 import java.util.Arrays;
 
